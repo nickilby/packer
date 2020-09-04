@@ -63,6 +63,10 @@
         "echo 'Packer Template Build -- Complete'"
       ],
       "type": "shell"
+    },
+    {
+      "type": "ansible",
+      "playbook_file": "./ansible/node-exporter.yml"
     }
   ]
 }
