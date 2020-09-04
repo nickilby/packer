@@ -1,0 +1,28 @@
+
+# Install Packer
+https://learn.hashicorp.com/tutorials/packer/getting-started-install
+
+# Example Repo
+https://github.com/allthingsclowd/packer-vsphere-iso-example
+https://github.com/geerlingguy/packer-boxes
+https://github.com/guillermo-musumeci/packer-vsphere-iso-linux/tree/master/Ubuntu-18.04
+
+# Medium Article
+https://medium.com/@gmusumeci/deploying-vmware-vsphere-virtual-machines-with-packer-terraform-d0211f72b7f5
+http://manpages.ubuntu.com/manpages/focal/man7/casper.7.html
+
+
+packer fix old.json > new.json
+
+http://releases.ubuntu.com/focal/
+
+https://github.com/nickcharlton/packer-ubuntu-2004
+
+
+# Run Command
+
+packer build -var-file 2004_variables.json 2004.json
+# Using -force flag will overwrite existing template
+packer build -force -var-file 2004_variables.json 2004.json
+
+https://help.ubuntu.com/lts/installation-guide/s390x/apbs04.html

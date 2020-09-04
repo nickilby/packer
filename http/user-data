@@ -1,0 +1,42 @@
+#cloud-config
+autoinstall:
+  version: 1
+  apt:
+    geoip: true
+    preserve_sources_list: false
+    primary:
+    - arches: [amd64, i386]
+      uri: http://gb.archive.ubuntu.com/ubuntu
+    - arches: [default]
+      uri: http://ports.ubuntu.com/ubuntu-ports
+  identity:
+    hostname: ubuntu2004
+    username: headhoncho
+    password: Zengenti987
+  ssh:
+    allow-pw: true
+    install-server: true
+  locale: en_GB
+  keyboard:
+    layout: en
+    variant: uk
+  storage:
+    layout:
+      name: direct
+    config:
+      - type: disk
+        id: disk0
+        match:
+          size: largest
+      - type: partition
+        id: boot-partition
+        device: disk0
+        size: 1G
+      - type: partition
+        id: root-partition
+        device: disk0
+        size: -1
+  late-commands:
+    - "echo 'Defaults:headhoncho !requiretty' > /target/etc/sudoers.d/headhoncho"
+    - "echo 'headhoncho ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/headhoncho"
+    - "chmod 440 /target/etc/sudoers.d/headhoncho"

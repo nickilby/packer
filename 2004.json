@@ -1,0 +1,69 @@
+{
+  "builders": [
+    {
+      "CPUs": "{{user `vm-cpu-num`}}",
+      "RAM": "{{user `vm-mem-size`}}",
+      "RAM_reserve_all": true,
+      "boot_command": [
+        "<esc><wait>",
+        "<esc><wait>",
+        "<enter><wait>",
+        "/install/vmlinuz<wait>",
+        " initrd=/install/initrd.gz",
+        " preseed/file=/floppy/preseed.cfg",
+        " auto-install/enable=true" ,
+        " hostname={{ user `hostname` }} ",
+        " -- <wait>",
+        "<enter><wait>"
+      ],
+      "boot_order": "disk,cdrom",
+      "boot_wait": "5s",
+      "cluster": "{{user `cluster`}}",
+      "convert_to_template": "true",
+      "datacenter": "{{user `datacenter`}}",
+      "datastore": "{{user `datastore`}}",
+      "disk_controller_type": "pvscsi",
+      "floppy_files": [
+        "./preseed.cfg"
+      ],
+      "folder": "{{user `folder`}}",
+      "guest_os_type": "ubuntu64Guest",
+      "host": "{{user `host`}}",
+      "http_directory": "http",
+      "insecure_connection": "true",
+      "iso_checksum": "{{user `iso-checksum-type`}}:{{user `iso-checksum`}}",
+      "iso_urls": "{{user `iso-url`}}",
+      "network_adapters": [
+        {
+          "network": "{{user `network`}}",
+          "network_card": "vmxnet3"
+        }
+      ],
+      "notes": "Build via Packer",
+      "password": "{{user `vcenter-password`}}",
+      "ssh_certificate_file": "{{user `ssh_certificate_file`}}",
+      "ssh_handshake_attempts": "{{user `ssh_handshake_attempts`}}",
+      "ssh_password": "{{user `ssh-password`}}",
+      "ssh_username": "{{user `ssh-username`}}",
+      "storage": [
+        {
+          "disk_size": "{{user `vm-disk-size`}}",
+          "disk_thin_provisioned": true
+        }
+      ],
+      "type": "vsphere-iso",
+      "username": "{{user `vcenter-username`}}",
+      "vcenter_server": "{{user `vcenter-server`}}",
+      "vm_name": "{{user `vm-name`}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "inline": [
+        "echo 'Packer Template Build -- Complete'"
+      ],
+      "type": "shell"
+    }
+  ]
+}
+
