@@ -1,4 +1,12 @@
 
+# Run Command
+
+packer build -var-file 2004_variables.json 2004.json
+
+# Using -force flag will overwrite existing template
+packer build -force -var-file 2004_variables.json 2004.json
+
+
 # Install Packer
 https://learn.hashicorp.com/tutorials/packer/getting-started-install
 
