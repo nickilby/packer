@@ -1,0 +1,10 @@
+set relativenumber
+set number
+set cursorline
+set ruler
+set backspace=2
+set tabstop=4
+set shiftwidth=4
+set expandtab
+highlight LineNr ctermfg=grey ctermbg=black
+syntax on

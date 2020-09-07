@@ -1,0 +1,42 @@
+- name: Update packages
+  apt:
+    upgrade: yes
+    cache_valid_time: 86400
+    autoclean: yes
+    autoremove: yes
+  become: True
+
+- name: Install HTOP
+  apt:
+      name: htop
+  become: True
+
+- name: Check that the 20auto-upgrades exists
+  stat:
+    path: /etc/apt/apt.conf.d/20auto-upgrades
+  register: file_exists
+
+- name: Output 20auto-upgrades
+  debug:
+    var: file_exists
+    verbosity: 3
+
+- name: Reset auto-upgrades
+  blockinfile:
+    path: /etc/apt/apt.conf.d/20auto-upgrades
+    marker: "{{ item }}"
+    block: ""
+  become: yes
+  loop:
+      - 'APT::Periodic::Update-Package-Lists "1";'
+      - 'APT::Periodic::Unattended-Upgrade "1";'
+  when: file_exists.stat.exists == true
+
+- name: Disable auto-upgrades
+  blockinfile:
+    path: /etc/apt/apt.conf.d/20auto-upgrades
+    block: |
+        APT::Periodic::Update-Package-Lists "0";                                                                                                        
+        APT::Periodic::Unattended-Upgrade "0";
+  become: yes
+  when: file_exists.stat.exists == true

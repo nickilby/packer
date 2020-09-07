@@ -1,0 +1,3 @@
+- include: configure-os.yml
+
+- include: configure-apt.yml

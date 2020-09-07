@@ -1,3 +1,13 @@
+# Pre-requisites
+Install
+  * Packer 
+  * Ansible
+
+Credentials to vcenter 
+
+
+# Install Packer
+https://learn.hashicorp.com/tutorials/packer/getting-started-install
 
 # Run Command
 
@@ -7,8 +17,8 @@ packer build -var-file 2004_variables.json 2004.json
 packer build -force -var-file 2004_variables.json 2004.json
 
 
-# Install Packer
-https://learn.hashicorp.com/tutorials/packer/getting-started-install
+
+# Background Reading
 
 # Example Repo
 https://github.com/allthingsclowd/packer-vsphere-iso-example
@@ -19,7 +29,7 @@ https://github.com/guillermo-musumeci/packer-vsphere-iso-linux/tree/master/Ubunt
 https://medium.com/@gmusumeci/deploying-vmware-vsphere-virtual-machines-with-packer-terraform-d0211f72b7f5
 http://manpages.ubuntu.com/manpages/focal/man7/casper.7.html
 
-
+# Re-format packer files to remove depricated arguments
 packer fix old.json > new.json
 
 http://releases.ubuntu.com/focal/

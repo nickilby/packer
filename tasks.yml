@@ -1,0 +1,32 @@
+# Overview
+
+Current state is that packer takes the 20.04 legacy ISO and uses a preseed file to deploy the image and convert into template. 
+With the plus of a single ansible playbook to deploy node exporter to prove how that works.
+
+#Issues 
+ 1: So far using US langauge and locale as this was a stumbling block getting it to work with GB.
+ 2: Using legacy ISO and preseed. As of 20.04 you can use live ISO with config file. This would be future proof.
+ 3: Not using HTTP server to pass preseed/config file as believe issue with port number/filewall access. (random port selection)
+ 4: Using pfsense as DHCP server in LAN, ideally would have a DHCP server in its own network of packer.
+
+
+#Findings
+
+Initial testing booting from template. 
+ 
+#Conducted on host 11 to local SSD.
+
+27 seconds to clone VM from SAN datastore to local SSD.
+6.4 Seconds to power on, get an IP from DHCP and login.
+Boot complete within 34 seconds 
+
+#Conducted on host 11 to same SAN as template
+
+20 seconds to clone vm
+5 seconds to power on and get DHCP lease.
+Boot complete in 30 seconds 
+
+#Conducted on host 11 to different SAN to template
+18 seconds to clone vm 
+9 seconds to power on and get dhco lease.
+Boot complete in 33 seconds.
