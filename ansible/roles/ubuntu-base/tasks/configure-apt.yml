@@ -6,9 +6,16 @@
     autoremove: yes
   become: True
 
-- name: Install HTOP
+- name: Install Apt packages
   apt:
-      name: htop
+    name:
+      - perl
+      - open-vm-tools
+      - htop 
+      - net-tools
+      - vim
+    cache_valid_time: 86400 # 24 hours
+    state: present
   become: True
 
 - name: Check that the 20auto-upgrades exists
