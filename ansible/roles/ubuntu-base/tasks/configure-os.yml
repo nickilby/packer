@@ -51,7 +51,7 @@
     path: /lib/init/vars.sh
   register: vars_exists
 
-- name: Ensure fsck in run non-interactively
+- name: Ensure fsck is run non-interactively
   lineinfile:
     path: /lib/init/vars.sh
     regexp: '^FSCKFIX'
@@ -64,3 +64,11 @@
   stat:
     path: /etc/default/rcS
   register: rcS_exists
+
+- name: Fool vcenter 6.5 to belive OS is 18.04 for NIC customization (revert after deployed) 20.04 supported in vcenter 6.7
+  lineinfile:
+    path: /etc/issue
+    regexp: '^Ubuntu'
+    line: 'Ubuntu 18.04.4 LTS \n \l'
+    backup: yes
+  become: true

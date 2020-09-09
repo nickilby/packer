@@ -8,6 +8,7 @@ With the plus of a single ansible playbook to deploy node exporter to prove how 
  2: Using legacy ISO and preseed. As of 20.04 you can use live ISO with config file. This would be future proof.
  3: Not using HTTP server to pass preseed/config file as believe issue with port number/filewall access. (random port selection)
  4: Using pfsense as DHCP server in LAN, ideally would have a DHCP server in its own network of packer.
+ 5: open_vm_tools seems to have an issue when vm is created from template its network is disconncted.
 
 
 #Findings

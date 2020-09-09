@@ -4,19 +4,22 @@
     cache_valid_time: 86400
     autoclean: yes
     autoremove: yes
-  become: True
+  become: yes
 
 - name: Install Apt packages
   apt:
     name:
       - perl
-      - open-vm-tools
       - htop 
       - net-tools
       - vim
+      - python
+      - nplan
+      - netplan.io
+      - net-tools
     cache_valid_time: 86400 # 24 hours
     state: present
-  become: True
+  become: yes
 
 - name: Check that the 20auto-upgrades exists
   stat:

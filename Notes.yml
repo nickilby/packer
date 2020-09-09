@@ -16,7 +16,8 @@ packer build -var-file 2004_variables.json 2004.json
 # Using -force flag will overwrite existing template
 packer build -force -var-file 2004_variables.json 2004.json
 
-
+# Ansible Playbook for contensis repo
+ansible-playbook provision-from-template.yml -i config/hosts/packer.yml 
 
 # Background Reading
 
