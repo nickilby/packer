@@ -1,0 +1,29 @@
+{
+    "workbench.colorTheme": "Solarized Light",
+    "files.associations": {
+        "*.yml.j2": "yaml",
+        "Vagrantfile": "ruby"
+    },
+    "editor.minimap.enabled": false,
+
+    "python.testing.autoTestDiscoverOnSaveEnabled": true,
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "autopep8",
+    "python.formatting.autopep8Args": ["--max-line-length", "100"],
+    "editor.lineNumbers": "on",
+    "terminal.integrated.scrollback": 10000,
+    "python.linting.pylintEnabled": true,
+    "editor.detectIndentation": false,
+    "python.pythonPath": ".venv/bin/python",
+    "python.languageServer": "Jedi",
+    "python.dataScience.debugJustMyCode": false,
+    "python.linting.mypyArgs": [
+        "--ignore-missing-imports",
+        "--follow-imports=silent",
+        "--show-column-numbers"
+    ],
+    "python.linting.pydocstyleEnabled": false
+}

@@ -1,11 +1,38 @@
 {
     "builders": [
-      {
-        "communicator": "ssh",
-        "source_path": "hashicorp/precise64",
-        "provider": "virtualbox",
-        "add_force": true,
-        "type": "vagrant"
-      }
+        {
+            "communicator": "ssh",
+            "source_path": "ubuntu/bionic64",
+            "provider": "virtualbox",
+            "add_force": true,
+            "type": "vagrant"
+        },
+        {
+            "type": "docker",
+            "image": "18.04",
+            "commit": true
+        }
+    ],
+    "provisioners": [
+        {
+            "inline": [
+                "echo 'Packer Build -- Complete'"
+            ],
+            "type": "shell"
+        },
+        {
+            "inline": [
+                "apt-get update && apt-get -y install sudo && sudo apt-get --assume-yes install php7.2-cli"
+            ],
+            "type": "shell"
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant-cloud",
+            "box_tag": "joejcollins/test",
+            "access_token": "QVovDF5YLkevEQ.atlasv1.zcerSSWZywbXspzmm802nBdgzDe590eHFigeOKDCsqwurhSdOPXmAO8CPVCYL9OWeXs",
+            "version": "0.0.1"
+        }
     ]
-  }
+}
