@@ -31,7 +31,7 @@
         {
             "type": "vagrant-cloud",
             "box_tag": "joejcollins/test",
-            "access_token": "QVovDF5YLkevEQ.atlasv1.zcerSSWZywbXspzmm802nBdgzDe590eHFigeOKDCsqwurhSdOPXmAO8CPVCYL9OWeXs",
+            "access_token": "{{user `vagrant-token`}}",
             "version": "0.0.1"
         }
     ]
