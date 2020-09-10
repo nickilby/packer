@@ -2,6 +2,8 @@ packer_cache/
 secrets.json
 
 iso/
-output-vagrant/
+output-*/
 .vagrant
 *.log
+
+*_variables.json
